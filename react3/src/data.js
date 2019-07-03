@@ -7,7 +7,7 @@ const data = [
     employer: "Twinder",
     title: "Physical Therapy Assistant",
     favoriteMovies: [
-      "That Night in Varennes (Nuit de Varennes, La)",
+      "That Night in Varennes",
       "Spy(ies) (Espion(s))",
       "Klip (Clip)"
     ]
