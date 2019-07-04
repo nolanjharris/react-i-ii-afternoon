@@ -3,15 +3,28 @@ import React, { Component } from 'react';
 class DisplayData extends Component {
 
     render() {
-        let firstName = this.props.dataObject[this.props.dataIndex].name.first;
-        let lastName = this.props.dataObject[this.props.dataIndex].name.last;
-        let city = this.props.dataObject[this.props.dataIndex].city;
-        let country = this.props.dataObject[this.props.dataIndex].country;
-        let jobTitle = this.props.dataObject[this.props.dataIndex].title;
-        let employer = this.props.dataObject[this.props.dataIndex].employer;
-        let movieOne = this.props.dataObject[this.props.dataIndex].favoriteMovies[0];
-        let movieTwo = this.props.dataObject[this.props.dataIndex].favoriteMovies[1];
-        let movieThree = this.props.dataObject[this.props.dataIndex].favoriteMovies[2];
+        let firstName, lastName, city, country, jobTitle, employer, movieOne, movieTwo, movieThree;
+        if (this.props.dataObject.length === 0) {
+            firstName = '';
+            lastName = '';
+            city = '';
+            country = '';
+            jobTitle = '';
+            employer = '';
+            movieOne = '';
+            movieTwo = '';
+            movieThree = '';
+        } else {
+            firstName = this.props.dataObject[this.props.dataIndex].name.first;
+            lastName = this.props.dataObject[this.props.dataIndex].name.last;
+            city = this.props.dataObject[this.props.dataIndex].city;
+            country = this.props.dataObject[this.props.dataIndex].country;
+            jobTitle = this.props.dataObject[this.props.dataIndex].title;
+            employer = this.props.dataObject[this.props.dataIndex].employer;
+            movieOne = this.props.dataObject[this.props.dataIndex].favoriteMovies[0];
+            movieTwo = this.props.dataObject[this.props.dataIndex].favoriteMovies[1];
+            movieThree = this.props.dataObject[this.props.dataIndex].favoriteMovies[2];
+        }
         return (
             <div className="displayInfo">
                 <div className="personInfo">

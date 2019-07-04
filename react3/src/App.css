@@ -137,3 +137,40 @@ nav a {
 .hidden {
   visibility: hidden;
 }
+
+.promptFields {
+  width: 85vw;
+  height: fit-content;
+  background-color: #ebebeb;
+  margin: 50px 0;
+}
+
+.promptFields .prompts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 30px;
+}
+
+.prompts input {
+  height: 25px;
+  border-radius: 3px;
+}
+
+.prompts * {
+  width: calc(100% * (1/6) - 10px - 1px);
+}
+
+.prompts button {
+  font-size: .9em;
+  padding: 10px 15px;
+  margin: 0 10px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  background-color: #35a5da;
+  border: none;
+  border-radius: 15px;
+}
