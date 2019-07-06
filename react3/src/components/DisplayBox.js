@@ -25,13 +25,17 @@ class DisplayBox extends Component {
 
     handlePrevious() {
         if (this.state.currentObjectIndex > 0) {
-            this.setState({ currentObjectIndex: this.state.currentObjectIndex - 1 })
+            this.setState({ currentObjectIndex: this.state.currentObjectIndex - 1, editHidden: true, addHidden: true })
+        } else {
+            this.setState({ currentObjectIndex: this.state.data.length - 1, editHidden: true, addHidden: true })
         }
     }
 
     handleNext() {
         if (this.state.currentObjectIndex < this.state.data.length - 1) {
-            this.setState({ currentObjectIndex: this.state.currentObjectIndex + 1 })
+            this.setState({ currentObjectIndex: this.state.currentObjectIndex + 1, editHidden: true, addHidden: true })
+        } else {
+            this.setState({ currentObjectIndex: 0, editHidden: true, addHidden: true })
         }
     }
 
@@ -41,6 +45,7 @@ class DisplayBox extends Component {
 
     handleEdit() {
         this.setState({ editHidden: false })
+        console.log(this.state.currentObjectIndex);
     }
 
     handleDelete() {
@@ -60,12 +65,15 @@ class DisplayBox extends Component {
     }
 
     handleEditObject(edittedObject) {
+        console.log(edittedObject)
         let objectCopy = [...this.state.data];
         objectCopy.splice(this.state.currentObjectIndex, 1, edittedObject)
         this.setState({ data: objectCopy, editHidden: true });
+
     }
 
     render() {
+
         return (
             <div className="displayAll">
                 <div className="displayBox">
@@ -83,8 +91,21 @@ class DisplayBox extends Component {
                         <button onClick={this.handleNext}>Next &gt;</button>
                     </div>
                 </div>
-                {this.state.addHidden ? null : <New addObject={this.handleAddObject} />}
-                {this.state.editHidden ? null : <Edit data={this.state.data} index={this.state.currentObjectIndex} editObject={this.handleEditObject} />}
+                <New addObject={this.handleAddObject} addHidden={this.state.addHidden} />
+                {this.state.editHidden ? null :
+                    <Edit
+                        firstName={this.state.data[this.state.currentObjectIndex].name.first}
+                        lastName={this.state.data[this.state.currentObjectIndex].name.last}
+                        city={this.state.data[this.state.currentObjectIndex].city}
+                        country={this.state.data[this.state.currentObjectIndex].country}
+                        title={this.state.data[this.state.currentObjectIndex].title}
+                        employer={this.state.data[this.state.currentObjectIndex].employer}
+                        movie1={this.state.data[this.state.currentObjectIndex].favoriteMovies[0]}
+                        movie2={this.state.data[this.state.currentObjectIndex].favoriteMovies[1]}
+                        movie3={this.state.data[this.state.currentObjectIndex].favoriteMovies[2]}
+                        index={this.state.currentObjectIndex}
+                        editHidden={this.state.editHidden}
+                        editObject={this.handleEditObject} />}
             </div>
         )
     }

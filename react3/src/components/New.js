@@ -25,6 +25,10 @@ class New extends Component {
         this.handleAddMovie3 = this.handleAddMovie3.bind(this);
     }
 
+    handleChange(e) {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
     handleAddFirstName(e) {
         this.setState({ firstName: e.target.value })
     }
@@ -90,27 +94,32 @@ class New extends Component {
     render() {
 
         return (
-            <div className="promptFields">
-                <div className="addObject prompts">
-                    <p>First Name: </p>
-                    <input placeholder="first name" onChange={this.handleAddFirstName} />
-                    <p>Last Name: </p>
-                    <input placeholder="last name" onChange={this.handleAddLastName} />
-                    <p>Hometown: </p>
-                    <input placeholder="city" onChange={this.handleAddCity} />
-                    <p>Country: </p>
-                    <input placeholder="country" onChange={this.handleAddCountry} />
-                    <p>Job Title: </p>
-                    <input placeholder="title" onChange={this.handleAddTitle} />
-                    <p>Employer: </p>
-                    <input placeholder="employer" onChange={this.handleAddEmployer} />
-                    <p>Favorite Movies: </p>
-                    <input placeholder="Movie One" onChange={this.handleAddMovie1} />
-                    <input placeholder="Movie Two" onChange={this.handleAddMovie2} />
-                    <input placeholder="Movie Three" onChange={this.handleAddMovie3} />
-                    <button onClick={this.addNewObject.bind(this)}>Add New Item</button>
-                </div>
-            </div>
+            <>
+                {
+                    this.props.addHidden ? null :
+                        <div className="promptFields">
+                            <div className="addObject prompts">
+                                <p>First Name: </p>
+                                <input placeholder="first name" onChange={this.handleAddFirstName} />
+                                <p>Last Name: </p>
+                                <input placeholder="last name" onChange={this.handleAddLastName} />
+                                <p>Hometown: </p>
+                                <input placeholder="city" onChange={this.handleAddCity} />
+                                <p>Country: </p>
+                                <input placeholder="country" onChange={this.handleAddCountry} />
+                                <p>Job Title: </p>
+                                <input placeholder="title" onChange={this.handleAddTitle} />
+                                <p>Employer: </p>
+                                <input placeholder="employer" onChange={this.handleAddEmployer} />
+                                <p>Favorite Movies: </p>
+                                <input placeholder="Movie One" onChange={this.handleAddMovie1} />
+                                <input placeholder="Movie Two" onChange={this.handleAddMovie2} />
+                                <input placeholder="Movie Three" onChange={this.handleAddMovie3} />
+                                <button onClick={this.addNewObject.bind(this)}>Add New Item</button>
+                            </div>
+                        </div>
+                }
+            </>
         )
     }
 }
